@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
-    // Start is called before the first frame update
-    void Start()
+    Coroutine damageCoroutine;
+
+    // 아군 근접유닛 및 아군 발사체와 충돌시 코루틴으로 대미지 입는 로직 반복
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("champion"))
+        {
+            Character champion = other.GetComponent<Character>();
+            float damage = champion.AttackPower;
+            float interval = champion.AttackInterval;
+
+            damageCoroutine = StartCoroutine(OnDamage(damage, interval));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        
+        if (other.CompareTag("champion"))
+        {
+            StopCoroutine(damageCoroutine);
+            damageCoroutine = null;
+        }
     }
 }

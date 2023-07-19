@@ -3,7 +3,7 @@
         {
             "charaId":"champ_knight",
             "hp":400,
-            "attack":40,
+            "attackPower":40,
             "armor":40,
             "attackInterval":2,
             "attackRange":0,
@@ -13,7 +13,7 @@
         {
             "charaId":"champ_archer",
             "hp":200,
-            "attack":50,
+            "attackPower":50,
             "armor":10,
             "attackInterval":1,
             "attackRange":4,
@@ -23,7 +23,7 @@
         {
             "charaId":"champ_priest",
             "hp":150,
-            "attack":20,
+            "attackPower":20,
             "armor":0,
             "attackInterval":3,
             "attackRange":3,
@@ -33,7 +33,7 @@
         {
             "charaId":"enemy_goblin",
             "hp":80,
-            "attack":20,
+            "attackPower":20,
             "armor":0,
             "attackInterval":1,
             "attackRange":0,
@@ -43,7 +43,7 @@
         {
             "charaId":"enemy_troll",
             "hp":400,
-            "attack":50,
+            "attackPower":50,
             "armor":10,
             "attackInterval":2,
             "attackRange":0,
@@ -53,7 +53,7 @@
         {
             "charaId":"enemy_goblin_archer",
             "hp":60,
-            "attack":30,
+            "attackPower":30,
             "armor":0,
             "attackInterval":1,
             "attackRange":4,

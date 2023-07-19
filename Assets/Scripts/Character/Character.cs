@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
 
     protected float maxHp;
     protected float currentHp;
-    private float attack;
+    private float attackPower;
     protected float armor;
     private float attackInterval;
     protected float attackRange;
@@ -26,40 +26,31 @@ public class Character : MonoBehaviour
     protected float initCooltime;
     protected float cooltime;
 
-    public float Attack { get => attack; }
+    public string CharacterId { get => characterId; }
+    public float AttackPower { get => attackPower; }
     public float AttackInterval { get => attackInterval; }
 
-    void Start()
-    {
-        Debug.Log("character Start");
-        GameManager gameManager = GameManager.Instance;
-        Status status = gameManager.GetStatus(characterId);
-        Skill skill = gameManager.GetSkill(status.SkillId);
-        BindStatusAndSkill(status, skill);
-
-        Debug.Log(characterId);
-        Debug.Log("hp: " + maxHp);
-        Debug.Log("attack: " + attack);
-        Debug.Log("armor: " + armor);
-    }
-
-    void BindStatusAndSkill(Status status, Skill skill)
+    public void BindStatusAndSkill(Status status, Skill skill)
     {
         maxHp = status.Hp;
         currentHp = maxHp;
-        attack = status.Attack;
+        attackPower = status.AttackPower;
         armor = status.Armor;
         attackInterval = status.AttackInterval;
         speed = status.Speed;
         skillId = status.SkillId;
 
-        skillName = skill.SkillName;
-        targetType = skill.TargetType;
-        targetStat = skill.TargetStat;
-        effect = skill.Effect;
-        duration = skill.Duration;
-        initCooltime = skill.InitCooltime;
-        cooltime = skill.Cooltime;
+        // 아군 한정. 적은 스킬이 없음
+        if (skill != null)
+        {
+            skillName = skill.SkillName;
+            targetType = skill.TargetType;
+            targetStat = skill.TargetStat;
+            effect = skill.Effect;
+            duration = skill.Duration;
+            initCooltime = skill.InitCooltime;
+            cooltime = skill.Cooltime;
+        }
     }
 
     protected IEnumerator OnDamage(float damage, float interval)

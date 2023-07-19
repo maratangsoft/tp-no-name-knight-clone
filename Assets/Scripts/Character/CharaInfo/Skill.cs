@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SkillList
+public class SkillListWrapper
 {
     [SerializeField] List<Skill> skillList;
+
+    public List<Skill> SkillList { get => skillList; }
 }
 
 [Serializable]
